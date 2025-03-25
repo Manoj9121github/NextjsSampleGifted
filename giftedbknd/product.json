@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "productName": "Laptop",
+        "price": 999.99,
+        "image": "https://example.com/images/laptop.jpg",
+        "category": "Electronics"
+    },
+    {
+        "id": 2,
+        "productName": "Smartphone",
+        "price": 699.99,
+        "image": "https://example.com/images/smartphone.jpg",
+        "category": "Electronics"
+    },
+    {
+        "id": 3,
+        "productName": "Sneakers",
+        "price": 79.99,
+        "image": "https://example.com/images/sneakers.jpg",
+        "category": "Footwear"
+    },
+    {
+        "id": 4,
+        "productName": "Wristwatch",
+        "price": 199.99,
+        "image": "https://example.com/images/wristwatch.jpg",
+        "category": "Accessories"
+    }
+]
