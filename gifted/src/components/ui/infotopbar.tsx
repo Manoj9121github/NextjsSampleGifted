@@ -1,5 +1,7 @@
+"useclient"
+
 import React from "react";
-import { Mail } from "lucide-react";
+import { Mail, ShoppingCart } from "lucide-react";
 import { Phone } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./button";
@@ -37,16 +39,25 @@ const InfoMain = () => {
 
           <Search className="w-16 mt-5"/>
         </div>
-        <div className="mt-5 ml-5 pt-1 pr-1 pl-1 rounded bg-amber-300 text-center"><Link href={'/loginpage'} className="">login here</Link></div>
+        <div className="flex">
+        <div className="mt-5 ml-5 pt-1 pr-1 pl-1 rounded bg-amber-300 text-center">
+          <Link href={'/loginpage'} className="">login here</Link>
+          
+        </div>
+        <div>
+        
+        </div>
+
+        </div>
       </div>
 
       <nav className="flex justify-center mt-5 text-white bg-indigo-950 p-4">
         <ul className="flex justify-between">
             <Link href={'/'} className="mr-8 text-xl">Home</Link>
-            <Link href={'/'} className="mr-8 text-xl">Gifts & Articles</Link>
+            <Link href={'/giftarticles'} className="mr-8 text-xl">Gifts & Articles</Link>
             <Link href={'/'} className="mr-8 text-xl">Festive Special</Link>
-            <Link href={'/'} className="mr-8 text-xl ">Terms & Conditions</Link>
-            <Link href={'/'} className="mr-8 text-xl">Contact</Link>
+            <Link href={'/'} className="mr-8 text-xl ">Services</Link>
+            <Link href={'/'} className="mr-8 text-xl">Home Delivery </Link>
         </ul>
 
       </nav>

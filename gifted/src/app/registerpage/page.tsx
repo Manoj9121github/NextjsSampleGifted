@@ -1,21 +1,21 @@
 "use client"
 
 
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import Link from 'next/link'
+import { toast } from 'sonner'
 const RegPage = () => {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
     
         if (password !== confirmPassword) {
@@ -28,11 +28,11 @@ const RegPage = () => {
             last_name: lastName,
             email,
             password,
-            confirmPassword,
+            
         };
     
         try {
-            const response = await fetch('http://localhost:3002/data', {
+            const response = await fetch('http://localhost:3010/data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,17 +40,26 @@ const RegPage = () => {
                 body: JSON.stringify(newUser),
             });
     
-            // Log the response status and body
+            
             console.log('Response status:', response.status);
-            const responseBody = await response.text(); // Get the response body
+            const responseBody = await response.text(); 
             console.log('Response body:', responseBody);
+
+            if(response.status === 400) {
+                alert('user already exists')
+            }
+            if(response.status === 201) {
+                toast("Event has been created.")
+
+            }
     
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
+            
     
             setMessage('Registration successfully done!');
-            // Clear the form
+            
             setFirstName('');
             setLastName('');
             setEmail('');
@@ -63,14 +72,14 @@ const RegPage = () => {
     };
     
   return (
-    <div>
+    <div className="bg-slate-800 p-50">
         <div className="w-[300px] h-[500px] bg-white shadow-lg rounded-lg p-4 mx-auto mt-20">
-            <h1 className='text-center text-3xl'>Registration</h1>
+            <h1 className='text-center text-3xl text-orange-400 m-2'>Registration</h1>
         
         
         
         <form onSubmit={handleSubmit}>
-        <Label className='mt-3'>Enter FirstName:</Label>
+        <Label className='mt-4'>Enter FirstName:</Label>
         <Input
          className='mt-2'
          type='text'

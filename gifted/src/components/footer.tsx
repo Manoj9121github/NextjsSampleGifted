@@ -37,7 +37,7 @@ const FooterComp = () => {
         </div>
         <div>
         <div className="mt-4   mx-5 border-t border-gray-400" style={{ marginTop: '15px' }}>
-            <h1 className='text-gray-300 text-center '>© 2019 Optic Zone, All rights reserved.</h1>
+            <h1 className='text-gray-300 text-center '>© All rights reserved.</h1>
         </div>
         </div>
       

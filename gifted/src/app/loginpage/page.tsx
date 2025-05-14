@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
@@ -14,10 +14,10 @@ const LoginPage = () => {
     const [message, setMessage] = useState('');
     const router = useRouter();
 
-    const LoginSubmit = async (e) =>{
+    const LoginSubmit = async (e: FormEvent) =>{
       e.preventDefault();
       try {
-        const response = await fetch('http://localhost:3002/login', {
+        const response = await fetch('http://localhost:3010/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,8 +28,8 @@ const LoginPage = () => {
         if (response.ok) {
             const message = await response.text();
             setMessage(message);
-            router.push('/'); // Success message
-            // Redirect or perform additional actions here
+            router.push('/giftarticles'); 
+            alert('login successful')
         } else {
             const errorMessage = await response.text();
             setMessage(errorMessage); // Error message
@@ -40,7 +40,7 @@ const LoginPage = () => {
     }
     }
   return (
-    <div>
+    <div className="bg-slate-800 p-60">
       <div className="w-[300px] h-[400px] bg-white shadow-lg rounded-lg p-4 mx-auto mt-20">
         <h1 className="text-3xl text-center text-blue-400">Login</h1>
         <form onSubmit={LoginSubmit}>
@@ -66,8 +66,8 @@ const LoginPage = () => {
         </div>
 
         
-        <div>
-          <Link className="text-red-500" href={"/registerpage"}>Register here</Link>
+        <div className="mt-4 text-center">
+          <Link className="text-xl text-orange-400 " href={"/registerpage"}>Click to Register</Link>
         </div>
 
         </form>
